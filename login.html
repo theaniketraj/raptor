@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- Firebase SDKs - These should be loaded before script.js -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <!-- Your script file (loaded after Firebase) -->
+    <script type="module" src="login.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>RAPTOR</h1>
+            <p>SMART HELMET CRASH DETECTION</p>
+            <button class="left-section" onclick="location.href='docs.html'">Learn More</button>
+        </div>
+        <div class="right-section">
+            <h2>Hello!</h2>
+            <p>Welcome Back</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <span class="icon">📧</span>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <span class="icon">🔒</span>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" onclick="location.href='dashboard.html'">Login</button>
+                <!-- <a href="#" class="forgot-password">Forgot Password</a> -->
+            </form>
+        </div>
+    </div>
+</body>
+</html>

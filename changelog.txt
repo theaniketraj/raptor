@@ -1,0 +1,32 @@
+Raptor's Web Portal Changelog
+v2.2.0
+
+10th Feb.
+    1. Portal Deployed.
+
+12th Feb
+    -> Known Issues
+    1. Visibility Issues
+    2. Nav-Bar Disappearance when scrolled.
+    3. Site wide Nav-Bar inaccessible.
+
+16th Feb
+    1. Entire Website Redesigned.
+    2. Site wide Nav-Bar fixed.
+    3. Visiblity Issues fixed.
+    4. Logo fixed.
+    5. Gallery Updated.
+
+24th Feb:
+    1. Desktop version design changes completed.
+    2. Fixed some issues.
+    3. Resolved HTML validation issues.
+    4. Improved page speed.
+
+1st March:
+    1. Responsive version completed.
+
+7th March:
+    1. Docs Updated
+    2. Login Page Updated
+    3. Dashboard Added

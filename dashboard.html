@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raptor Dashboard</title>
+  <!-- Preload and include Tailwind and Font Awesome -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .bg-primary { background-color: #b066f8; }
+    .completed { text-decoration: line-through; color: #6b7280; }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar Overlay (mobile only) -->
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden z-40"></div>
+    <!-- Sidebar (16rem wide) -->
+    <div id="sidebar" class="bg-indigo-900 text-white w-64 fixed inset-y-0 left-0 transform -translate-x-full transition duration-300 ease-in-out z-50 md:static md:translate-x-0">
+      <div class="p-4 flex items-center justify-between">
+        <span class="text-xl font-bold">Raptor Dashboard</span>
+        <!-- X (Close) Button for mobile -->
+        <button id="closeSidebar" class="md:hidden text-gray-300 hover:text-white">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+      <nav class="mt-8">
+        <a href="#" class="flex items-center px-4 py-3 bg-indigo-800">
+          <i class="fas fa-home w-6"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="flex items-center px-4 py-3 hover:bg-indigo-800">
+          <i class="fas fa-chart-line w-6"></i>
+          <span>Analytics</span>
+        </a>
+        <a href="#" class="flex items-center px-4 py-3 hover:bg-indigo-800">
+          <i class="fas fa-file-alt w-6"></i>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="flex items-center px-4 py-3 hover:bg-indigo-800">
+          <i class="fas fa-cog w-6"></i>
+          <span>Settings</span>
+        </a>
+        <a href="#" class="flex items-center px-4 py-3 hover:bg-indigo-800">
+          <i class="fas fa-question-circle w-6"></i>
+          <span>Help</span>
+        </a>
+      </nav>
+    </div>
+    <!-- Main Container (shifted right on desktop by 17rem) -->
+    <div class="flex-1 flex flex-col md:ml-[17rem]">
+      <!-- Header (non-fixed) -->
+      <header class="bg-white shadow-sm px-4 py-4">
+        <div class="flex items-center justify-between">
+          <!-- Hamburger Button for Mobile -->
+          <button id="sidebarToggle" class="md:hidden text-gray-600 mr-4">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+          <!-- Search Input -->
+          <div class="relative flex-1">
+            <input type="text" placeholder="Search dashboard..." class="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:border-indigo-500">
+            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+          </div>
+          <!-- Notification & Profile -->
+          <div class="flex items-center space-x-4 ml-4">
+            <button class="p-2 hover:bg-gray-100 rounded-full relative">
+              <i class="fas fa-bell text-gray-600"></i>
+              <span class="absolute top-0 right-0 h-2 w-2 rounded-full"></span>
+            </button>
+            <img src="images/user.png" alt="Profile" class="h-10 w-10 rounded-full cursor-pointer">
+          </div>
+        </div>
+      </header>
+      <!-- Main Content -->
+      <main class="flex-1 mt-4 p-4 overflow-y-auto">
+        <!-- Metrics Grid (Key Matrices Summary) -->
+        <div class="animate-pulse grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8" id="metricsGrid">
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-gray-500">Total Users</h3>
+              <i class="fas fa-users text-blue-500"></i>
+            </div>
+            <p class="text-2xl font-bold mt-2">50</p>
+            <span class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 5%</span>
+          </div>
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-gray-500">Revenue</h3>
+              <i class="fas fa-dollar-sign text-green-500"></i>
+            </div>
+            <p class="text-2xl font-bold mt-2">₹0</p>
+            <span class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 0%</span>
+          </div>
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-gray-500">Engagement</h3>
+              <i class="fas fa-chart-pie text-purple-500"></i>
+            </div>
+            <p class="text-2xl font-bold mt-2">58%</p>
+            <span class="text-red-500 text-sm"><i class="fas fa-arrow-down"></i> 35%</span>
+          </div>
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-gray-500">Active Users</h3>
+              <i class="fas fa-clock text-orange-500"></i>
+            </div>
+            <p class="text-2xl font-bold mt-2">15</p>
+            <span class="text-green-500 text-sm"><i class="fas fa-arrow-up"></i> 3%</span>
+          </div>
+        </div>
+        <!-- Performance Overview & Todo List Grid (2 columns on desktop) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <!-- Performance Overview Column -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Performance Overview</h2>
+            <!-- Removed cursor-pointer and hover effects -->
+            <div id="chartContainer" class="h-64 bg-gray-50 rounded-lg transition-all duration-300 p-4">
+              <canvas id="bikeAccidentsChart" class="w-full h-full"></canvas>
+            </div>
+          </div>
+          <!-- Todo List Column -->
+          <div class="bg-white rounded-lg shadow p-6">
+            <div class="flex flex-col space-y-4">
+              <!-- Input Row -->
+              <div class="flex items-center gap-2">
+                <input id="todoInput" type="text" placeholder="What do you need to do today?" class="flex-1 border border-gray-200 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <button id="addTodoButton" class="flex-shrink-0 whitespace-nowrap bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">Add</button>
+              </div>
+              <!-- Todo List Items -->
+              <div id="todoList" class="space-y-3">
+                <!-- Todo items will be appended here -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Recent Activity -->
+        <!-- <div class="bg-white rounded-lg shadow p-6">
+          <h2 class="text-xl font-semibold mb-4 flex justify-between items-center">
+            Recent Activity
+            <button class="text-sm text-indigo-500 hover:text-indigo-600 focus:outline-none">
+              <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+          </h2>
+          <div id="activityFeed" class="space-y-4 transition-all duration-300">
+            <div class="flex items-center space-x-4">
+              <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=40&h=40" alt="User" class="h-10 w-10 rounded-full">
+              <div class="flex-1">
+                <p class="text-sm font-medium">You updated the project status</p>
+                <p class="text-xs text-gray-500">2 hours ago</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40" alt="User" class="h-10 w-10 rounded-full">
+              <div class="flex-1">
+                <p class="text-sm font-medium">They added new task</p>
+                <p class="text-xs text-gray-500">5 hours ago</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </main>
+      <!-- Footer -->
+      <footer class="bg-white border-t px-4 py-3">
+        <div class="flex items-center justify-between text-sm text-gray-600">
+          <div>Version 1.0.0</div>
+          <div class="flex space-x-4">
+            <a href="docs.html" target="_blank" class="hover:text-indigo-600">Learn More</a>
+            <a href="https://contact-project-v.netlify.app" target="_blank" class="hover:text-indigo-600">Contact Us</a>
+          </div>
+          <div>© 2025 Raptor Dashboard. All rights reserved.</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Dummy function to simulate fetching data
+    function fetchDailyBikeAccidentsData() {
+      return new Promise(resolve => {
+        resolve({
+          labels: ["2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024", "2024-2025"],
+          values: [151417, 151113, 131714, 153972, 168491, 149455, 11336]
+        });
+      });
+    }
+    
+    // Initialize Chart.js
+    const ctx = document.getElementById('bikeAccidentsChart').getContext('2d');
+    const bikeAccidentsChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023", "2023-2024", "2024-2025"],
+        datasets: [{
+          label: 'Bike Accidents',
+          data: [151417, 151113, 131714, 153972, 168491, 149455, 11336],
+          borderColor: '#b066f8',
+          backgroundColor: 'rgba(176,102,248,0.2)',
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            display: true,
+            title: { display: true, text: 'Date' }
+          },
+          y: {
+            display: true,
+            title: { display: true, text: 'Accidents' }
+          }
+        }
+      }
+    });
+    
+    // Update the chart with fetched data
+    function updateBikeAccidentsChart() {
+      fetchDailyBikeAccidentsData().then(data => {
+        bikeAccidentsChart.data.labels = data.labels;
+        bikeAccidentsChart.data.datasets[0].data = data.values;
+        bikeAccidentsChart.update();
+      });
+    }
+    // Initial chart update on page load and then every 24 hours
+    updateBikeAccidentsChart();
+    setInterval(updateBikeAccidentsChart, 86400000);
+    
+    // Sidebar toggle functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const sidebarOverlay = document.getElementById('sidebarOverlay');
+      const closeSidebarBtn = document.getElementById('closeSidebar');
+      
+      function openSidebar() {
+        sidebar.classList.remove('-translate-x-full');
+        sidebarOverlay.classList.remove('hidden');
+      }
+      
+      function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+      }
+      
+      sidebarToggle.addEventListener('click', openSidebar);
+      closeSidebarBtn.addEventListener('click', closeSidebar);
+      sidebarOverlay.addEventListener('click', closeSidebar);
+      
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeSidebar();
+      });
+    });
+    
+    // --- Todo List Functionality ---
+    // Attach event listener to the checkbox container (using a dedicated class)
+    function attachCheckboxEvent(container) {
+      container.addEventListener('click', function () {
+        const checkbox = container.querySelector('input[type="checkbox"]');
+        const textSpan = container.parentElement.querySelector('span');
+        checkbox.checked = !checkbox.checked;
+        if (checkbox.checked) {
+          container.classList.add('bg-primary', 'text-white');
+          container.classList.remove('border-2', 'border-primary');
+          container.innerHTML = `
+            <input type="checkbox" checked class="opacity-0 absolute pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          `;
+          textSpan.classList.add('completed');
+        } else {
+          container.classList.remove('bg-primary', 'text-white');
+          container.classList.add('border-2', 'border-primary');
+          container.innerHTML = `<input type="checkbox" class="opacity-0 absolute pointer-events-none">`;
+          textSpan.classList.remove('completed');
+        }
+      });
+    }
+    
+    // Todo List Add Functionality
+    const addButton = document.getElementById('addTodoButton');
+    const input = document.getElementById('todoInput');
+    addButton.addEventListener('click', function () {
+      if (input.value.trim() === '') return;
+      const todoList = document.getElementById('todoList');
+      const newTodo = document.createElement('div');
+      newTodo.className = 'flex items-center justify-between';
+      newTodo.innerHTML = `
+        <div class="flex items-center gap-3">
+          <div class="checkbox-container flex items-center justify-center w-6 h-6 border-2 border-primary rounded relative">
+            <input type="checkbox" class="opacity-0 absolute pointer-events-none">
+          </div>
+          <span>${input.value}</span>
+        </div>
+        <button class="deleteTodo flex-shrink-0 w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-100">×</button>
+      `;
+      todoList.appendChild(newTodo);
+      input.value = '';
+      const newCheckbox = newTodo.querySelector('.checkbox-container');
+      attachCheckboxEvent(newCheckbox);
+      // Attach delete event for this new todo item only
+      newTodo.querySelector('.deleteTodo').addEventListener('click', function (e) {
+        e.stopPropagation();
+        newTodo.remove();
+      });
+    });
+    input.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') addButton.click();
+    });
+  </script>
+</body>
+</html>
