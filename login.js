@@ -4,7 +4,7 @@ import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/fireb
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyASOlGPvQqOWlNUzv2fSpdS2eOo4idgVLc",
+    apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     authDomain: "raptor-ee307.firebaseapp.com",
     databaseURL: "https://raptor-ee307-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "raptor-ee307",
