@@ -12,6 +12,7 @@
             color: #333;
             font-family: Arial, sans-serif;
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -77,7 +78,7 @@
                 <li><a href="#resolution">Resolution</a></li>
                 <li><a href="#application">Application</a></li>
                 <li><a href="#tech-stack">Tech Stack</a></li>
-                <!-- <li><a href="https://plastecure.netlify.app/team" target="_blank">Team</a></li> -->
+                <li><a href="https://plastecure.netlify.app/team" target="_blank">Team</a></li>
                 <!-- <li><a href="#faq">FAQ</a></li>
                 <li><a href="#license">License</a></li> -->
             </ul>
@@ -108,119 +109,121 @@
                 Key Features & Implementation
                 <br>
                 <br>
-                <ul>
+            <ul>
                 1. AI-Based Crash Detection System
-                    Accelerometer & Gyroscope Sensors detect sudden impact, abrupt <br>motion changes, and helmet tilt angles,
-                    determining if a crash has occurred.
-                    <br>
-                    <br>
-                    → AI algorithms analyze sensor data to distinguish between a normal fall and a severe accident.
-                    <br>
-                    <br>
-                    → The system prevents false alarms by using Impact Threshold models trained on real-world riding data.
-                </ul>
+                Accelerometer & Gyroscope Sensors detect sudden impact, abrupt <br>motion changes, and helmet tilt
+                angles,
+                determining if a crash has occurred.
                 <br>
-                <ul>
+                <br>
+                → AI algorithms analyze sensor data to distinguish between a normal fall and a severe accident.
+                <br>
+                <br>
+                → The system prevents false alarms by using Impact Threshold models trained on real-world riding data.
+            </ul>
+            <br>
+            <ul>
                 2. Emergency Alert & Live Location Sharing
                 Upon detecting an accident, Raptor automatically sends an SOS alert to emergency contacts.
-                    <br>
-                    <br>
-                    → The alert includes the rider’s live GPS location, allowing responders to reach the accident site
-                    quickly.
-                    <br>
-                    <br>
-                    → Uses ESP-32 module for real-time location tracking, even in low-connectivity areas.
-                </ul>
                 <br>
                 <br>
-                <ul>
+                → The alert includes the rider’s live GPS location, allowing responders to reach the accident site
+                quickly.
+                <br>
+                <br>
+                → Uses ESP-32 module for real-time location tracking, even in low-connectivity areas.
+            </ul>
+            <br>
+            <br>
+            <ul>
                 3. Fall & Unconsciousness Detection
                 If a rider falls but doesn’t move for a certain period, the system assumes unconsciousness and triggers
                 emergency alerts.
-                    <br>
-                    <br>
-                    → Integrated pulse sensor & body temperature monitor can detect abnormal rider conditions.
-                </ul>
                 <br>
                 <br>
-                <ul>
+                → Integrated pulse sensor & body temperature monitor can detect abnormal rider conditions.
+            </ul>
+            <br>
+            <br>
+            <ul>
                 4. Smart Helmet Lock System (Prevention Feature)
                 The helmet has an ignition-locking mechanism, ensuring the bike won’t start unless the helmet is worn.
-                    <br>
-                    <br>
-                    → Uses RFID/NFC authentication for secure user verification before ignition.
-                </ul>
                 <br>
                 <br>
-                <ul>
+                → Uses RFID/NFC authentication for secure user verification before ignition.
+            </ul>
+            <br>
+            <br>
+            <ul>
                 5. Mobile App Integration for Alerts & Tracking
                 The helmet connects to a mobile app via Bluetooth, allowing riders to:
-                    <br>
-                    <br>
-                    → View ride analytics & helmet status.
-                    <br>
-                    <br>
-                    → Receive battery & sensor health alerts.
-                    <br>
-                    <br>
-                    → Customize emergency contact details.
-                    <br>
-                    <br>
-                    → The app is designed with a clean, user-friendly UI, ensuring easy navigation and real-time monitoring.
-                </ul>
                 <br>
                 <br>
-                <ul>
+                → View ride analytics & helmet status.
+                <br>
+                <br>
+                → Receive battery & sensor health alerts.
+                <br>
+                <br>
+                → Customize emergency contact details.
+                <br>
+                <br>
+                → The app is designed with a clean, user-friendly UI, ensuring easy navigation and real-time monitoring.
+            </ul>
+            <br>
+            <br>
+            <ul>
                 6. Voice Assistance & Hands-Free Communication
                 Built-in Bluetooth speakers & microphone allow for hands-free calls and navigation assistance.
-                    <br>
-                    <br>
-                    → AI voice commands enable riders to control features without distraction.</p>
-                </ul>
+                <br>
+                <br>
+                → AI voice commands enable riders to control features without distraction.</p>
+            </ul>
         </section>
 
         <section id="resolution">
             <h2>Resolution</h2>
             <p>Challenges & Solutions
-                <ul>
-                    → Accurate Crash Detection: Implemented AI-driven pattern recognition to reduce false positives.
+            <ul>
+                → Accurate Crash Detection: Implemented AI-driven pattern recognition to reduce false positives.
                 <br>
                 <br>
-                    → Ensuring Instant Emergency Response: Optimized ESP-32 module for fast and reliable connectivity.
+                → Ensuring Instant Emergency Response: Optimized ESP-32 module for fast and reliable connectivity.
                 <br>
                 <br>
-                    → User Comfort & Battery Life: Used a lightweight battery pack with optimized power consumption, ensuring long-lasting operation without adding extra weight.</p>
-                </ul>
+                → User Comfort & Battery Life: Used a lightweight battery pack with optimized power consumption,
+                ensuring long-lasting operation without adding extra weight.</p>
+            </ul>
         </section>
 
         <section id="application">
             <h2>Application</h2>
             <p>Expected Impact & Real-World Application.
-                <ul>
-                    → Increases rider safety by ensuring quick medical response.
+            <ul>
+                → Increases rider safety by ensuring quick medical response.
                 <br>
                 <br>
-                    → Prevents unauthorized ignition through helmet authentication.
+                → Prevents unauthorized ignition through helmet authentication.
                 <br>
                 <br>
-                    → Reduces accident fatalities by leveraging AI for faster emergency assistance.</p>
-                </ul>
+                → Reduces accident fatalities by leveraging AI for faster emergency assistance.</p>
+            </ul>
         </section>
 
         <section id="tech-stack">
             <h2>Tech Stack</h2>
             <p>Tech Stack & Tools Used
-                <ul>
-                    → Hardware: ESP32, MPU6050 (Accelerometer & Gyroscope), RFID/NFC Sensor, Pulse Sensor.
+            <ul>
+                → Hardware: ESP32, MPU6050 (Accelerometer & Gyroscope), RFID/NFC Sensor, Pulse Sensor.
                 <br>
                 <br>
-                    → Software: Kotlin (for mobile app), C (for AI crash detection algorithms).
+                → Software: Kotlin (for mobile app), C (for AI crash detection algorithms).
                 <br>
                 <br>
-                    → Database & Cloud: Firebase for real-time alerts & Supabase for emergency logs.
+                → Database & Cloud: Firebase for real-time alerts & Supabase for emergency logs.
                 <br>
                 </p>
-                </ul>
+            </ul>
         </section>
 
         <!-- <section id="team">
