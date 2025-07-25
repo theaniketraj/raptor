@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,16 +12,24 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    .bg-primary { background-color: #b066f8; }
-    .completed { text-decoration: line-through; color: #6b7280; }
+    .bg-primary {
+      background-color: #b066f8;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: #6b7280;
+    }
   </style>
 </head>
+
 <body class="bg-gray-100">
   <div class="flex h-screen overflow-hidden">
     <!-- Sidebar Overlay (mobile only) -->
     <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden z-40"></div>
     <!-- Sidebar (16rem wide) -->
-    <div id="sidebar" class="bg-indigo-900 text-white w-64 fixed inset-y-0 left-0 transform -translate-x-full transition duration-300 ease-in-out z-50 md:static md:translate-x-0">
+    <div id="sidebar"
+      class="bg-indigo-900 text-white w-64 fixed inset-y-0 left-0 transform -translate-x-full transition duration-300 ease-in-out z-50 md:static md:translate-x-0">
       <div class="p-4 flex items-center justify-between">
         <span class="text-xl font-bold">Raptor Dashboard</span>
         <!-- X (Close) Button for mobile -->
@@ -62,7 +71,8 @@
           </button>
           <!-- Search Input -->
           <div class="relative flex-1">
-            <input type="text" placeholder="Search dashboard..." class="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:border-indigo-500">
+            <input type="text" placeholder="Search dashboard..."
+              class="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:border-indigo-500">
             <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
           </div>
           <!-- Notification & Profile -->
@@ -127,8 +137,10 @@
             <div class="flex flex-col space-y-4">
               <!-- Input Row -->
               <div class="flex items-center gap-2">
-                <input id="todoInput" type="text" placeholder="What do you need to do today?" class="flex-1 border border-gray-200 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/30">
-                <button id="addTodoButton" class="flex-shrink-0 whitespace-nowrap bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">Add</button>
+                <input id="todoInput" type="text" placeholder="What do you need to do today?"
+                  class="flex-1 border border-gray-200 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/30">
+                <button id="addTodoButton"
+                  class="flex-shrink-0 whitespace-nowrap bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">Add</button>
               </div>
               <!-- Todo List Items -->
               <div id="todoList" class="space-y-3">
@@ -188,7 +200,7 @@
         });
       });
     }
-    
+
     // Initialize Chart.js
     const ctx = document.getElementById('bikeAccidentsChart').getContext('2d');
     const bikeAccidentsChart = new Chart(ctx, {
@@ -218,7 +230,7 @@
         }
       }
     });
-    
+
     // Update the chart with fetched data
     function updateBikeAccidentsChart() {
       fetchDailyBikeAccidentsData().then(data => {
@@ -230,33 +242,33 @@
     // Initial chart update on page load and then every 24 hours
     updateBikeAccidentsChart();
     setInterval(updateBikeAccidentsChart, 86400000);
-    
+
     // Sidebar toggle functionality
     document.addEventListener('DOMContentLoaded', function () {
       const sidebar = document.getElementById('sidebar');
       const sidebarToggle = document.getElementById('sidebarToggle');
       const sidebarOverlay = document.getElementById('sidebarOverlay');
       const closeSidebarBtn = document.getElementById('closeSidebar');
-      
+
       function openSidebar() {
         sidebar.classList.remove('-translate-x-full');
         sidebarOverlay.classList.remove('hidden');
       }
-      
+
       function closeSidebar() {
         sidebar.classList.add('-translate-x-full');
         sidebarOverlay.classList.add('hidden');
       }
-      
+
       sidebarToggle.addEventListener('click', openSidebar);
       closeSidebarBtn.addEventListener('click', closeSidebar);
       sidebarOverlay.addEventListener('click', closeSidebar);
-      
+
       document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') closeSidebar();
       });
     });
-    
+
     // --- Todo List Functionality ---
     // Attach event listener to the checkbox container (using a dedicated class)
     function attachCheckboxEvent(container) {
@@ -282,7 +294,7 @@
         }
       });
     }
-    
+
     // Todo List Add Functionality
     const addButton = document.getElementById('addTodoButton');
     const input = document.getElementById('todoInput');
@@ -315,4 +327,5 @@
     });
   </script>
 </body>
+
 </html>
